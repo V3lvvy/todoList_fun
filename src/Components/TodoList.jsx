@@ -16,7 +16,7 @@ const TodoList = () => {
     const handleAddList = (index) => {
         if (listInputs[index] && listInputs[index].trim() !== '') {
             const newTodos = [...todos];
-            newTodos[index].lists.push(listInputs[index]);
+            newTodos[index].lists.push({ text: listInputs[index], completed: false});
             setTodos(newTodos);
             setListInputs({...listInputs, [index]: ''});
         }
@@ -31,6 +31,15 @@ const TodoList = () => {
         newTodos.splice(index, 1);
         setTodos(newTodos);
     };
+
+    const handleToggleComplete = (todoIndex, listIndex) => {
+      const updatedTodos = [...todos];
+      const task = updatedTodos[todoIndex].lists[listIndex];
+      task.completed = !task.completed;
+      setTodos(updatedTodos);
+    }
+    
+
     
   return (
     <div className='wrapper'>
@@ -54,10 +63,13 @@ const TodoList = () => {
                     <h3>{todo.heading}</h3> 
                     <button className='delete-button' onClick={() => handleDeleteTodo(index)}>Delete</button>
                 </div>
-                <ul>
+                <ul className='lists'>
                     {todo.lists.map((list, listIndex) => (
                         <li key={listIndex} className='todo_inside_list'>
-                            <p>{list}</p>
+                            <label className='checkbox-label'>
+                              <input type='checkbox' checked={list.completed} onChange={() => handleToggleComplete(index, listIndex)}/>
+                              <p className={list.completed ? 'completed' : ''}>{list.text}</p>
+                            </label>
                         </li>
                     ))}
                 </ul>
