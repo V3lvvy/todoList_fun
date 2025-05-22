@@ -9,7 +9,7 @@ html, body, #root {
 
 @font-face {
   font-family: 'Witcher-knight';
-  src: url('./src/assets/fonts/Witcher-knight.ttf') format('truetype');
+  src: url('./src/assets/font/Witcher-knight.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
