@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/V3lvvy/React_todoList",
+  "homepage": "https://V3lvvy.github.io/todoList_test",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
