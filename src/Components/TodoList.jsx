@@ -33,18 +33,18 @@ const TodoList = () => {
     };
     
   return (
-    <>
+    <div className='wrapper'>
       <div className="todo-container">
         <h1 className="title">My Todo List</h1>
         <div className="input-container">
           <input
             type="text"
             className="heading-input"
-            placeholder="Enter heading"
+            placeholder="Enter Task"
             value={headingInput}
             onChange={(e) => {setHeadingInput(e.target.value);}}
           />
-          <button className="add-list-button" onClick={handleAddTodo}>Add Heading</button>
+          <button className="add-list-button" onClick={handleAddTodo}>Add Todo</button>
         </div>
       </div>
       <div className="todo_main"> 
@@ -52,7 +52,7 @@ const TodoList = () => {
             <div key={index} className='todo-card'>
                 <div className='heading_todo'>
                     <h3>{todo.heading}</h3> 
-                    <button className='delete-button-heading' onClick={() => handleDeleteTodo(index)}>Delete heading</button>
+                    <button className='delete-button' onClick={() => handleDeleteTodo(index)}>Delete</button>
                 </div>
                 <ul>
                     {todo.lists.map((list, listIndex) => (
@@ -73,7 +73,7 @@ const TodoList = () => {
             </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
