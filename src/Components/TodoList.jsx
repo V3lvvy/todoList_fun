@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './TodoList.css';
+import 'animate.css';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
     const [headingInput, setHeadingInput] = useState('');
     const [listInputs, setListInputs] = useState({});
+    const [deletingIndex, setDeletingIndex] = useState(null);
 
     const handleAddTodo = () => {
         if (headingInput.trim() !== '') {
@@ -27,9 +29,13 @@ const TodoList = () => {
     };
 
     const handleDeleteTodo = (index) => {
+        setDeletingIndex(index); 
+        setTimeout( () => {
         const newTodos = [...todos];
-        newTodos.splice(index, 1);
-        setTodos(newTodos);
+          newTodos.splice(index, 1);
+          setTodos(newTodos);
+          setDeletingIndex(null);
+        }, 2000);
     };
 
     const handleToggleComplete = (todoIndex, listIndex) => {
@@ -58,7 +64,7 @@ const TodoList = () => {
       </div>
       <div className="todo_main"> 
         {todos.map((todo, index) => (
-            <div key={index} className='todo-card'>
+            <div key={index} className={`todo-card ${deletingIndex === index ? 'animate__animated animate__hinge' : ""}`}>
                 <div className='heading_todo'>
                     <h3>{todo.heading}</h3> 
                     <button className='delete-button' onClick={() => handleDeleteTodo(index)}>Delete</button>
