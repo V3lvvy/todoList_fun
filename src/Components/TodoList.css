@@ -87,6 +87,7 @@ html, body, #root {
     font-size: 20px;
     text-align: center;
     font-family: 'Witcher-knight', serif;
+    letter-spacing: 1px;
 }
 
 .delete-button {
@@ -135,11 +136,16 @@ html, body, #root {
     margin-left: 16px;
     font-family: 'Witcher-knight', serif;
 }
+.add-list-button:hover {
+    background-color:rgb(32, 109, 32);
+}
+
 .todo_inside_list {
     display: flex;
     gap: 140px;
     margin: 10px;
     font-family: 'Witcher-knight', serif;
+    letter-spacing: 1px;
 }
 
 .checkbox-label {
@@ -156,4 +162,31 @@ html, body, #root {
 
 .lists {
     padding-left: 10px;
+}
+
+.todo-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.todo-text span {
+  position: relative;
+  z-index: 1;
+}
+
+.todo-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: grey;
+  transition: width 1s ease;
+  z-index: 0;
+}
+
+.todo-text.completed::after {
+  width: 100%;
 }
