@@ -49,7 +49,7 @@ const TodoList = () => {
     
   return (
     <div className='wrapper'>
-      <div className="todo-container">
+      <div className="todo-container animate__animated animate__swing animate__slower">
         <h1 className="title">My Todo List</h1>
         <div className="input-container">
           <input
@@ -59,7 +59,7 @@ const TodoList = () => {
             value={headingInput}
             onChange={(e) => {setHeadingInput(e.target.value);}}
           />
-          <button className="add-list-button" onClick={handleAddTodo}>Add Todo</button>
+          <button className="add-list-button animate__animated animate__pulse animate__infinite animate__slower" onClick={handleAddTodo}>Add Todo</button>
         </div>
       </div>
       <div className="todo_main"> 
@@ -74,7 +74,11 @@ const TodoList = () => {
                         <li key={listIndex} className='todo_inside_list'>
                             <label className='checkbox-label'>
                               <input type='checkbox' checked={list.completed} onChange={() => handleToggleComplete(index, listIndex)}/>
-                              <p className={list.completed ? 'completed' : ''}>{list.text}</p>
+                              <p className={`todo-text ${list.completed ? 'completed' : ''}`}>
+                                <span>
+                                {list.text}
+                                </span>
+                                </p>
                             </label>
                         </li>
                     ))}
